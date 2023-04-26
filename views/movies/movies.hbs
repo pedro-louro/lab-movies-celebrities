@@ -1,0 +1,8 @@
+<h2>Movies</h2>
+
+{{#each movies}}
+  <a href="/movies/{{id}}"><h5>{{title}}</h5></a>
+  <p>{{plot}}</p>
+  <p>{{cast.name}}</p>
+  <hr>
+{{/each}}
