@@ -40,5 +40,14 @@ router.get("/celebrities/:id", async (req, res) => {
   }
 })
 
+router.post("/celebrities/:id/delete", async (req, res) => {
+  try {
+    await Celebrities.findByIdAndRemove(req.params.id)
+    res.redirect("/celebrities")
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 module.exports = router;
