@@ -1,21 +1,21 @@
-<h2>{{title}}</h2>
-<form action="/movies/{{id}}" method="POST">
+<h2>{{findMovie.title}}</h2>
+<form action="/movies/{{findMovie.id}}" method="POST">
 
   <label>Title</label>
-  <input type="text" name="title" value="{{title}}">
+  <input type="text" name="title" value="{{findMovie.title}}">
 
   <label>Genre</label>
-  <input type="text" name="genre" value="{{genre}}">
+  <input type="text" name="genre" value="{{findMovie.genre}}">
 
   <label>Plot</label>
-  <input type="text" name="plot" value="{{plot}}">
+  <input type="text" name="plot" value="{{findMovie.plot}}">
 
-  {{!-- <label>Cast</label>
-  <select name="cast" multiple value="{{cast}}">
-    {{#each celebrities}}
+  <label>Cast</label>
+  <select name="cast">
+    <option value="{{findMovie.cast.id}}">{{findMovie.cast.name}}</option>
+    {{#each findCelebrities}}
       <option value="{{id}}">{{name}}</option>
     {{/each}}
-  </select> --}}
+  </select>
   <button type="submit">Edit Movie</button>
 </form>
-<p>test</p>

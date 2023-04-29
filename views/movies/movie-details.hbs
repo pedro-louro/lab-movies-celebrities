@@ -4,15 +4,16 @@
 <p>Genre: {{getMovie.genre}}</p>
 <p>Plot: {{getMovie.plot}}</p>
 <p>Cast:</p>
+<ul>
+  <li>Name: {{getMovie.cast.name}}</li>
+  <li>Occupation: {{getMovie.cast.occupation}}</li>
+  <li>Catch Phrase: {{getMovie.cast.catchPhrase}}</li>
+</ul>
 
-  {{#each getMovie.cast}}
-    <p>Name: {{name}} Occupation: {{occupation}}, Catch Phrase: {{catchPhrase}}</p>
-  {{/each}}
-
-{{!-- <form action="/movies/{{getMovie.id}}/edit" method="POST">
+<form action="/movies/{{getMovie.id}}/edit" method="GET">
   <button type="submit">Edit Movie</button>
-</form> --}}
+</form>
 
 <form action="/movies/{{getMovie.id}}/delete" method="POST">
   <button type="submit">Delete Movie</button>
-</form>
+</form> 

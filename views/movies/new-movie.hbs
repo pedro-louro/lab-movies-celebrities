@@ -12,7 +12,8 @@
     <input type="text" name="plot">
 
     <label>Cast</label>
-    <select name="cast" multiple>
+    <select name="cast">
+      <option value="">Select a Celebrity</option>
       {{#each celebrities}}
         <option value="{{id}}">{{name}}</option>
       {{/each}}

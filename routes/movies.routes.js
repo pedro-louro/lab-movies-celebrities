@@ -40,7 +40,6 @@ router.get("/movies", async (req, res) => {
 router.get("/movies/:id", async (req, res) => {
   try {
     const getMovie = await Movie.findById(req.params.id).populate("cast")
-    console.log(getMovie.cast)
     res.render("movies/movie-details", {getMovie})
 
   } catch (error) {
@@ -57,14 +56,26 @@ try {
 }
 })
 
-router.get("movies/:id/edit", async (req, res) => {
+router.get("/movies/:id/edit", async (req, res) => {
   
   try {
-    const findMovie = await Movie.findById(req.params.id);
-    const findCelebrity = await Celebrity.findById(findMovie.cast)
-    res.render("movies/edit-movie", {findMovie})
+    const findMovie = await Movie.findById(req.params.id).populate("cast");
+    const findCelebrities = await Celebrities.find()
+    console.log(`Cast found: ${findCelebrities}`)
+    res.render("movies/edit-movie", {findMovie, findCelebrities})
   } catch (error) {
     console.log(error)
+  }
+})
+
+router.post("/movies/:id", async (req, res) => {
+  try {
+    const {title, genre, plot, cast} = req.body;
+    await Movie.findByIdAndUpdate(req.params.id, {title, genre, plot, cast});
+    res.redirect("/movies");
+
+  } catch (error) {
+    console.log(error);
   }
 })
 
