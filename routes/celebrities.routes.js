@@ -31,5 +31,14 @@ router.get("/celebrities", async (req, res) => {
   }
 })
 
+router.get("/celebrities/:id", async (req, res) => {
+  try {
+    const celebrity = await Celebrities.findById(req.params.id)
+    res.render("celebrities/celebrities-details", celebrity)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 module.exports = router;
